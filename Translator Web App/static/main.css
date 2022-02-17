@@ -1,0 +1,55 @@
+body{
+    background: #0E50BA;
+    margin: 0;
+}
+header {
+  padding: 1px;
+  text-align: center;
+  background: black;
+  color: white;
+  font-size: 20px;
+}
+
+.feed_container{
+    position: relative;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.translation_container,h2{
+    margin: 20px;
+    position: absolute;
+    top:20px;
+    color:white;
+    font-size:30px;
+}
+.translation_container,textarea{
+    position: absolute;
+    top: 80px;
+    width: 45%;
+    height: 400px;
+    font-size: 20px;
+    resize: none;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+    line-height: 1.4;
+}
+.information {
+    position: absolute;
+    top: 300px;
+    right: 30px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+h3 {
+    margin: 0;
+    text-decoration: underline;
+    font-size:30px;
+}
+
+
+
