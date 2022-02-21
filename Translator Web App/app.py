@@ -72,6 +72,10 @@ def index():
 def translator_feed():
     return Response(generate_frames(),mimetype="multipart/x-mixed-replace;boundary=frame")
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 
