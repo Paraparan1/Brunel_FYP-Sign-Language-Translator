@@ -1,18 +1,13 @@
 body{
-    background: #0E50BA;
+    background: whitesmoke;
     margin: 0;
-}
-header {
-  padding: 1px;
-  text-align: center;
-  background: black;
-  color: white;
-  font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .feed_container{
     position: relative;
-    margin: 10px;
+    margin: 75px;
     display: flex;
     justify-content: center;
 }
@@ -21,7 +16,7 @@ header {
     margin: 20px;
     position: absolute;
     top:20px;
-    color:white;
+    color:#152f5f;
     font-size:30px;
 }
 .translation_container,textarea{
@@ -40,7 +35,7 @@ header {
     position: absolute;
     top: 300px;
     right: 30px;
-    color: white;
+    color: #152f5f;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
@@ -50,6 +45,4 @@ h3 {
     text-decoration: underline;
     font-size:30px;
 }
-
-
 
