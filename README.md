@@ -18,7 +18,7 @@ Create an application that will be able to translate 28 signs which include 26 l
 
 #2 https://www.kaggle.com/ayuraj/asl-dataset
 
-# Refrences
+# References
 1.	British Deaf Association. 2021. Help & Resources - British Deaf Association. [online] Available at: <https://bda.org.uk/help-resources/> [Accessed 15 October 2021].
 2.	Kozik, K., 2019. Without Sign Language, Deaf People Are Not Equal. [online] Human Rights Watch. Available at: <https://www.hrw.org/news/2019/09/23/without-sign-language-deaf-people-are-not-equal> [Accessed 15 October 2021].
 
