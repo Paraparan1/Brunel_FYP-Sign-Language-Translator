@@ -18,7 +18,7 @@ class_names = ["del","spc","A","B","C","D","E","F","G","H","I","J","K","L","M","
 
 processed_Data = []
 
-#Preporcessing subclass
+#Preporcessing function
 def preprocessData():
     for x in class_names:
         #creating a path for each image in the directory with the class array.
@@ -31,6 +31,7 @@ def preprocessData():
             try:
                 #Converting the size of the image to 60 by 60
                 img_arr2 = cv2.resize(img_arr, dsize=(60,60))
+
 
             except Exception as e:
                 #In case of failure of converting a specific image the path is printed of the image with the error.
@@ -67,35 +68,35 @@ X_test = X_test/255.0
 print(X_train[1].shape)
 
 # Setting up a sequential neural network with 7 layers.
-# model = tf.keras.Sequential([
-#         #A convolutional layer with 16 filters and a kernel with a dimension of 3x3.
-#         tf.keras.layers.Conv2D(16, (3,3), activation ='relu', input_shape=X_train[1].shape),
-#         #Same layer as first but will learn unique features as the filters is randomised.
-#         tf.keras.layers.Conv2D(16, (3,3), activation ='relu'),
-#         #Maxpooling is used to reduce spatial dimensions of the output volume.
-#         #creates a feature map based of previous map containing important features.
-#         tf.keras.layers.MaxPool2D((2,2)),
-#         tf.keras.layers.Dense(128, activation="relu"),
-#         #flattening the data to a 1 dimensional array for next layer
-#         tf.keras.layers.Flatten(),
-#         #Dense layer with 50 neurons.
-#         tf.keras.layers.Dense(50, activation='relu'),
-#         #An output dense layer contain 28 neurons 26 for alphabet and 2 for space and delete gestures.
-#         tf.keras.layers.Dense(28, activation='softmax')
-# ])
-#
-# model.compile(optimizer="adam",loss="sparse_categorical_crossentropy", metrics=["accuracy"])
-#
-# #Early stop monitor to prevent over fitting by measuring validation loss once validation loss increases
-# #the neural network will stop training.
-#
-#
-# monitor = EarlyStopping(monitor = "val_loss",min_delta=1e-3,patience=5,verbose=1,mode="auto"
-#                         ,restore_best_weights=True)
-#
-# model.fit(X_train,Y_train,validation_data=(X_val,Y_val),callbacks=[monitor],verbose=2,epochs=1000)
+model = tf.keras.Sequential([
+        #A convolutional layer with 16 filters and a kernel with a dimension of 3x3.
+        tf.keras.layers.Conv2D(16, (3,3), activation ='relu', input_shape=X_train[1].shape),
+        #Same layer as first but will learn unique features as the filters is randomised.
+        tf.keras.layers.Conv2D(16, (3,3), activation ='relu'),
+        #Maxpooling is used to reduce spatial dimensions of the output volume.
+        #creates a feature map based of previous map containing important features.
+        tf.keras.layers.MaxPool2D((2,2)),
+        tf.keras.layers.Dense(128, activation="relu"),
+        #flattening the data to a 1 dimensional array for next layer
+        tf.keras.layers.Flatten(),
+        #Dense layer with 50 neurons.
+        tf.keras.layers.Dense(50, activation='relu'),
+        #An output dense layer contain 28 neurons 26 for alphabet and 2 for space and delete gestures.
+        tf.keras.layers.Dense(28, activation='softmax')
+])
 
-model = keras.models.load_model("ASLModelCombined5.h5")
+model.compile(optimizer="adam",loss="sparse_categorical_crossentropy", metrics=["accuracy"])
+
+#Early stop monitor to prevent over fitting by measuring validation loss once validation loss increases
+#the neural network will stop training.
+
+
+monitor = EarlyStopping(monitor = "val_loss",min_delta=1e-3,patience=5,verbose=1,mode="auto"
+                        ,restore_best_weights=True)
+
+model.fit(X_train,Y_train,validation_data=(X_val,Y_val),callbacks=[monitor],verbose=2,epochs=1000)
+
+# model = keras.models.load_model("ASLModelCombined5.h5")
 
 model.summary()
 prediction = model.predict(X_val)
