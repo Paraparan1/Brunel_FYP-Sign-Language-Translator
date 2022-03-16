@@ -12,7 +12,7 @@ import cv2
 #Assigning the data directory.
 dataDir = "Combined Dataset"
 
-#Assigning each class to the classes array.
+#Assigning each class to the classes list.
 class_names = ["del","spc","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W",
                "X","Y","Z"]
 
@@ -21,9 +21,9 @@ processed_Data = []
 #Preporcessing function
 def preprocessData():
     for x in class_names:
-        #creating a path for each image in the directory with the class array.
+        #creating a path for each image in the directory with the class list.
         path = os.path.join(dataDir,x)
-        #Assinging a class number based on the index of each class in the classes array.
+        #Assinging a class number based on the index of each class in the classes list.
         class_num = class_names.index(x)
         for img in os.listdir(path):
             #Reading each image with the path and then converting image to gray.
@@ -31,14 +31,14 @@ def preprocessData():
             try:
                 #Converting the size of the image to 60 by 60
                 img_arr2 = cv2.resize(img_arr, dsize=(60,60))
-
-
+                print(path,img)
             except Exception as e:
                 #In case of failure of converting a specific image the path is printed of the image with the error.
                 print(path,img)
             processed_Data.append([img_arr2,class_num])
 
 preprocessData()
+
 
 
 images =[]
