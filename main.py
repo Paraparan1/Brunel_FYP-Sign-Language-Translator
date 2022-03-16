@@ -60,7 +60,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(images, labels, test_size=0.
 X_train, X_val, Y_train, Y_val = train_test_split(X_train, Y_train, test_size=0.25, random_state=3)
 
 #Normalising the data for the neural network.
-#All the numbers are in the range of 256 as they are colors so dividing by 255 will give a range
+#All the numbers are in the range of 256 so dividing by 255 will give a range
 #from 0 to 1 making it easier for the neural network to interpret.
 X_train = X_train/255.0
 X_test = X_test/255.0
