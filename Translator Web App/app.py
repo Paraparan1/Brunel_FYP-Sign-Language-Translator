@@ -4,6 +4,7 @@ from flask import Flask,render_template,Response,jsonify,request
 import tensorflow.keras as keras
 import numpy as np
 import cv2
+import time
 
 app = Flask(__name__)
 
@@ -17,7 +18,13 @@ def generate_frames():
 
     img_size = (60, 60)
     cap = cv2.VideoCapture(0)
+
+    # fps = cap.get(cv2.CAP_PROP_FPS)
+    # num_frames = 1
+
     while cap.isOpened():
+
+        # start = time.time()
 
         ret, frame = cap.read()
 
@@ -41,7 +48,10 @@ def generate_frames():
         if prediction_accuracy > .99:
             translation.append(prediction_letter)
 
-
+        # end = time.time()
+        # seconds = end - start
+        # fps = num_frames / seconds
+        # cv2.putText(frame ,"FPS:" + str(round(fps)), (550,50),cv2.FONT_HERSHEY_PLAIN,1.5,(255,0,0),2)
         cv2.putText(frame, "Letter= " + prediction_letter, (10, 50), cv2.FONT_HERSHEY_PLAIN, 1.5, (255, 0, 0), 2)
         cv2.putText(frame, "Accuracy= " + str(*prediction_accuracy * 100) + "%", (10, 100), cv2.FONT_HERSHEY_PLAIN, 1.5,
                     (255, 0, 0), 2)
